@@ -1,0 +1,223 @@
+
+.ImagenLogo {
+    height: 150px;
+    width: auto;
+}
+
+.body{
+    background-color: rgb(119, 165, 175)
+}
+
+.WrapperTitulo{
+    background-color: rgba(35, 100, 64, 0.705);
+    gap: 20px;  
+}
+
+.BoxTextoBusqueda{
+    height: 35px;
+    width: 150px;
+    border-radius: 5px;
+}
+
+.BotonSearch {
+    background-color: #4CAF50;
+    height: 35px;
+    width: 70px;
+    border-radius: 5px;
+    color: white;                       
+    border: none;                 
+    cursor: pointer;              
+}
+
+.BotonSearch:hover{
+    background-color: green;
+    height: 35px;
+    width: 70px;
+    border-radius: 5px;
+    color: white;                       
+    border: none;                 
+    cursor: pointer;              
+}
+
+.navbar-nav .nav-link {
+    color: white;
+    font-size: large;
+}
+
+.navbar-marca{
+    font-size: 1.75rem;
+    color: white;
+
+}
+
+.navbar-marca:hover{
+    font-size: 1.75rem;
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.dropdown-menu{
+    background-color: rgba(35, 100, 64, 0.705);
+}
+
+.dropdown-item{
+    color: white;
+    font-size: large;
+}
+
+.nav-item .dropdown-item:hover {
+    background-color: rgba(35, 100, 64, 0.705);
+}
+
+.carrito:hover{
+    text-decoration: none;
+    opacity: 30%;
+}
+
+.WrapperPortada {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+    margin-top: 20px;
+    background-color: white;
+    align-items: center;
+}
+
+.BoxRopa {
+    margin: 10px;                     
+    height: 450px;                   
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    padding: 20px;                  
+    border-radius: 5px;
+}
+
+.BoxRopa .boton{
+    background-color: white;
+    height: auto;
+    width: 100px;
+    border-radius: 5px;       
+    cursor: pointer;
+    border-color: #4CAF50;
+}
+
+.BoxRopa .boton:hover{
+    background-color: rgb(194, 190, 190);
+    height: auto;
+    width: 100px;
+    border-radius: 5px;       
+    cursor: pointer;
+    border-color: #4CAF50;
+}
+
+.BoxRopa .imagen{
+    width: 300px;
+    height: 300px;
+}
+
+.GridProducto{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: 750px;
+    background-color: white;
+    margin-top: 100px;
+}
+
+.GridProducto .imagen{
+    width: 500px;
+    height: 500px;
+    justify-self: center;
+}
+
+.GridProducto .flexProducto > *{
+    margin-bottom: 60px;
+    margin-right: 60px;
+}
+
+.review-count {
+    color: #6c757d;
+    font-size: 0.9rem;
+}
+
+.material-icons{
+    font-size: 20px;
+    margin-right: 15px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+
+.Wrappercarrito{
+    height: 850px;
+}
+
+.carrito_pagina{
+    display: grid;
+    grid-template-columns: 1fr 3fr 3fr;
+    justify-content: center;
+    padding: 30px;
+    margin-left: 100px;
+    border-radius: 0px;
+    border-color: black;
+    border-color: #4CAF50;
+}
+
+.carrito-item_pagina{
+    margin-left: 50px;
+}
+
+.carrito_pagina .imagen{
+    height: 50px;
+    width: 50px;
+    border-radius: 50px;
+}
+  
+.btn-delete {
+    font-size: 1.5rem; /* tamaño de la cruz*/
+    color: #ff4d4d; 
+    margin-left: 20px;
+  }
+  
+.btn-delete:hover{
+    color: #ff0000; 
+    transform: scale(1.4);
+}
+
+/* CSS PLANTILLA LOGIN*/
+
+.gradient-custom {
+    /* fallback for old browsers */
+    background: #6a11cb;
+    
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
+    
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1))
+}
+
+.BoxTextoForm{
+    height: 35px;
+    width: 150px;
+    border-radius: 5px;
+    justify-self: center;
+}
+
+.BotonCambiar {
+    background-color: #2297db;
+    height: 35px;
+    width: 70px;
+    border-radius: 5px;
+    color: white;                       
+    border: none;                 
+    cursor: pointer;              
+}
+
+.footer{
+    margin: 10px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+

@@ -1,0 +1,15 @@
+
+GET http://localhost:8000/api/ratings/
+
+###
+
+GET http://localhost:8000/api/ratings/670811802d53bf8d9dc5a728
+
+###
+
+PUT http://localhost:8000/api/ratings/670811802d53bf8d9dc5a728  
+content-type: application/json 
+
+{
+    "rate": 2.9
+} 
