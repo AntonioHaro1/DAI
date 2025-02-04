@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}Carrito{% endblock %}
+
+{% block content %}
+    <div class="Wrappercarrito">
+    <h2 class="text-center py-3">Tu Carrito de Compras</h2>
+        {% for producto in productos %}
+          <div class="carrito_pagina">
+            <img src="{{ producto.image }}" class="imagen" alt="{{ producto.title }}">
+            <h3 class="carrito-item_pagina">{{ producto.title }}</h3>
+            <h3 class="carrito-item_pagina">Precio: {{ producto.price }} €</h3>
+              </button>
+              <form id="quitarCarrito-{{producto.id}}" action="/Quitar_carrito" method="POST">
+                <input type="hidden" name="productoId" value="{{producto.id}}">
+                <button onclick="QuitarCarrito('{{ producto.id }}')" type="button" class="btn btn-delete">
+                    <i class="bi bi-x-circle-fill"></i>
+                </button>
+              </form>
+          </div>    
+        {% endfor %}
+        <h3 class="text-center py-3">Precio total: {{precio_total}}</h3>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+      function QuitarCarrito(productoId){
+        Swal.fire({
+              title: "¿Está seguro de quitar el producto?",
+              icon: "question",
+              showCancelButton: true,
+              confirmButtonText: "Si, quitar",
+              cancelButtonText: "Cancelar"
+          }).then((result) => {
+              if (result.isConfirmed) {
+                  document.getElementById(`quitarCarrito-${productoId}`).submit();
+              }
+          });
+      }
+    </script>
+
+{% endblock %}

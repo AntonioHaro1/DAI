@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block title %}tienda{% endblock %}
+
+{% block content %}
+  <div >
+      <div class="GridProducto">
+        <img class="imagen" src="{{producto.image}}" class="imagen">
+        <div class="flexProducto">
+            <h1 class="">{{producto.title}}</h1>
+            <p>{{producto.description}}</p>
+            <h3>Precio: {{producto.price}} €</h3>
+            
+            <h3>{{producto.rating.rate}} <span class="material-icons" style="color: #ffc107;">star</span><span class="review-count">({{producto.rating.count}} reseñas)</span></h3>
+            
+            <form id="AnadirCarrito" action="/Anadir_carrito" method="POST">
+              <input type="hidden" name="productoId" value="{{ producto.id }}">
+              <button onclick="AñadirCarrito()" type="button" class="btn btn-outline-success btn-lg rounded-pill px-4">
+                  <i class="bi bi-cart-fill"></i> Añadir al carrito
+              </button>
+          </form>
+          
+          
+        </div>
+      </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script>
+    function AñadirCarrito(){
+      Swal.fire({
+            title: "¿Está seguro de añadir este producto al carrito?",
+            icon: "question",
+            showCancelButton: true,
+            confirmButtonText: "si, añadir",
+            cancelButtonText: "Cancelar"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire({
+                    icon: "success",
+                    text: 'Producto añadido',
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        document.getElementById("AnadirCarrito").submit();
+                        }
+                });
+            }
+        });
+    }
+  </script>
+
+{% endblock %}
