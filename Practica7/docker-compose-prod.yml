@@ -1,0 +1,36 @@
+version: "3.8"
+services:
+  tienda-app:
+    build: .
+    container_name: tienda-app
+    ports:
+      - "8000:8000"
+    environment:
+      MONGO_URI: mongodb://root:example@mongo:27017/
+    depends_on:
+      - mongo
+      - caddy
+    restart: unless-stopped
+
+  mongo:
+    image: mongo
+    restart: unless-stopped
+    volumes:
+      - ./data:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+
+  caddy:
+    image: caddy:alpine
+    restart: unless-stopped
+    ports: 
+      - 80:80
+      - 443:443
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile   
+      - ./dist:/usr/share/caddy/dist       
+
+volumes:
+  caddy-config:
+  caddy-data:

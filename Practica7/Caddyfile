@@ -1,0 +1,12 @@
+:80 {
+    # React
+    handle {
+        root * /usr/share/caddy/dist  
+        file_server
+    }
+
+    # Tienda
+    handle_path /tienda/* {
+        reverse_proxy tienda-app:8000  # Redirige las solicitudes al contenedor de la tienda
+    }
+}

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+<head>
+  <link rel="stylesheet" href="Estilo.css">
+  <link rel="stylesheet" href="/public/Estilo.css"> 
+</head>
+
+
+{% block title %}Portada{% endblock %}
+
+{% block content %}
+  <div class="WrapperPortada ">
+    {% for producto in productos %}
+    {% if categoria == producto.category or categoria == all %}
+      <div class="d-flex flex-column align-items-center text-center BoxRopa">
+        <img src="{{producto.image}}" class="imagen">
+        <p >{{producto.title}}</p>
+        <a href="/producto_{{ producto.id }}"><button class="boton"> View item</button></a>
+      </div>
+    {% endif %}
+    {% endfor %}
+  </div>
+
+  
+{% endblock %}

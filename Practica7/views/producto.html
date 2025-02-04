@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+
+{% block title %}tienda{% endblock %}
+
+{% block content %}
+  <div >
+      <div class="GridProducto">
+        <img class="imagen" src="{{producto.image}}" class="imagen">
+        <div class="flexProducto">
+            <h1 class="">{{producto.title}}</h1>
+            <p>{{producto.description}}</p>
+            <h3>Precio: {{producto.price}} €</h3>
+            <div>
+              <span class="stars" data-_id="{{producto._id}}"> 
+              </span>
+              <p class="Votos">Votos: {{producto.rating.count}}</p>
+          </div>
+
+          {% if not admin %} 
+            <form id="AnadirCarrito" action="/Anadir_carrito" method="POST">
+              <input type="hidden" name="productoId" value="{{ producto.id }}">
+              <button onclick="AñadirCarrito()" type="button" class="btn btn-outline-success btn-lg rounded-pill px-4">
+                  <i class="bi bi-cart-fill"></i> Añadir al carrito
+              </button>
+          </form>
+          {% else %}
+              <form id="Modificar_nombre{{producto.id}}" action="/Modificar_nombre" method="POST">
+                <div class="carrito-item_pagina">
+                  <h3 >{{ producto.title }}</h3>
+                  <input class="BoxTextoForm" type="text" name="nombre" id="producto-nombre-{{producto.id}}" placeholder="Nombre nuevo" value="">
+                  <input type="hidden" name="id" value="{{ producto.id }}">
+                  <button type="button" onclick="Modificar_nombre('{{ producto.id }}')" class="BotonCambiar ml-2">Modificar</button>
+                  <div id="advertencia-nombre-{{producto.id}}" style="color: red; display: none;">
+                    La primera letra debe ser mayúscula.
+                  </div>
+                </div>
+              </form>
+              <form  id="Modificar_precio{{producto.id}}" action="/Modificar_precio" method="POST">
+                <div class="carrito-item_pagina">
+                  <h3 >Precio: {{ producto.price }} €</h3>
+                  <input class="BoxTextoForm" type="number" step="0.01" name="precio" id="producto-precio-{{producto.id}}" placeholder="Precio nuevo" value="">
+                  <input type="hidden" name="id" value="{{ producto.id }}">
+                  <button type="button" onclick="Modificar_precio('{{ producto.id }}')" class="BotonCambiar ml-2">Modificar</button>
+                  <div id="advertencia-precio-{{producto.id}}" style="color: red; display: none;">
+                    Debe introducir un numero.
+                  </div>
+                </div>
+              </form> 
+          {% endif %} 
+          
+        </div>
+      </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script>
+    function AñadirCarrito(){
+      Swal.fire({
+            title: "¿Está seguro de añadir este producto al carrito?",
+            icon: "question",
+            showCancelButton: true,
+            confirmButtonText: "si, añadir",
+            cancelButtonText: "Cancelar"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire({
+                    icon: "success",
+                    text: 'Producto añadido',
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        document.getElementById("AnadirCarrito").submit();
+                        }
+                });
+            }
+        });
+    }
+    function Modificar_nombre(productoId){
+
+      let nombre = document.getElementById(`producto-nombre-${productoId}`).value;
+      // Verificar si la primera letra es mayúscula
+      if (nombre.charAt(0) === nombre.charAt(0).toUpperCase()) {
+        Swal.fire({
+            title: "¿Está seguro de cambiar el nombre del producto?",
+            icon: "question",
+            showCancelButton: true,
+            confirmButtonText: "Si, cambiar",
+            cancelButtonText: "Cancelar"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById(`Modificar_nombre${productoId}`).submit();
+            }
+        });
+      } else {
+        document.getElementById(`advertencia-nombre-${productoId}`).style.display = 'block';
+      }
+    }
+
+
+function Modificar_precio(productoId){
+
+    let precio = document.getElementById(`producto-precio-${productoId}`).value;
+    console.log(precio);
+    // Verificar si es un numero
+    if(isNaN(precio) || precio === ""){
+      document.getElementById(`advertencia-precio-${productoId}`).style.display = 'block';
+    }else{
+      Swal.fire({
+          title: "¿Está seguro de cambiar el precio del producto?",
+          icon: "question",
+          showCancelButton: true,
+          confirmButtonText: "Si, cambiar",
+          cancelButtonText: "Cancelar"
+      }).then((result) => {
+          if (result.isConfirmed) {
+              document.getElementById(`Modificar_precio${productoId}`).submit();
+          }
+      });
+
+    }
+
+}
+  </script>
+
+{% endblock %}
