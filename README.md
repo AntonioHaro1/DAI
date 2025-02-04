@@ -1,6 +1,6 @@
-# Prácticas de Desarrollo de Aplicaciones para Internet (DAI)
+# Desarrollo de Aplicaciones para Internet (DAI)
 
-Este repositorio contiene las prácticas realizadas en el curso de Desarrollo de Aplicaciones para Internet (DAI) UGR. Cada práctica explora distintos aspectos del desarrollo web utilizando tecnologías como Node.js, MongoDB, Express y React.
+Este repositorio contiene las prácticas realizadas en la asignatura de Desarrollo de Aplicaciones para Internet (DAI) UGR. Cada práctica explora distintos aspectos del desarrollo web utilizando tecnologías como Node.js, MongoDB, Express y React.
 
 ### Práctica 1: Creación de la Imagen de Docker y Base de Datos
 
